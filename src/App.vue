@@ -3,7 +3,7 @@
     <h1>Hello Eorzea</h1>
     <div class="PaneBody">
         <div class="leftPane">
-          
+            <ffxivDetails :details="ffxivapi"/>
         </div>
         <div class="mainPane">
 
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import ffxivDetails from './components/ffxivDetails.vue'
 export default {
   name:'App',
   data(){
@@ -30,6 +31,9 @@ export default {
     .then(res => res.json())
     .then(resstuff => this.ffxivapi=resstuff)
     }
+  },
+  components:{
+    ffxivDetails
   }
 }
 </script>
@@ -38,7 +42,7 @@ export default {
 body{
   width:100%;
   height:100%;
-  overflow:hidden;
+
   margin:0px;
   padding:5px;
 
@@ -53,6 +57,18 @@ body{
 div{
   border:solid red;
   border-width:thin;
+}
+.paneBody{
+  width:100%;
+  }
+.leftPane{
+  width:150px;
+  height:700px;
+  overflow:scroll;
+}
+.bodyPane{
+  width:80%;
+
 }
 </style>
 <!-- MVP
