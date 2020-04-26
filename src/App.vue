@@ -1,12 +1,21 @@
 <template lang="html">
   <body id="app">
-    <h1>Hello Eorzea</h1>
-    <div class="PaneBody">
-        <div class="leftPane">
-            <ffxivDetails :details="ffxivapi"/>
-        </div>
-        <div class="mainPane">
-
+      <div class="TopPane">
+          <h1>Hello Eorzeans</h1>
+      </div>
+      <div class="MidPane">
+          <div class="MidPaneLeft">
+              <ffxivDetails v-if="ffxivapi" :details="ffxivapi" />
+              <div v-if="!ffxivapi">
+                  <img src="./assets/SoD.gif" id="fc_logo"/><hr><hr>
+                  Loading Members, please hold yer chocobos
+              </div>
+          </div>
+          <div class="MidPaneBody">
+            <MemberDetails :member="selected" v-if="selected"/>
+              <div v-if="!selected">
+                  click on a member on the left to view his or her details
+          </div>
         </div>
   </div>
   </body>
@@ -14,15 +23,21 @@
 
 <script>
 import ffxivDetails from './components/ffxivDetails.vue'
+import MemberDetails from './components/MemberDetails.vue'
+import {eventBus} from './main.js'
+
 export default {
   name:'App',
   data(){
     return{
-      ffxivapi: null
+      ffxivapi: null,
+      selected: null,
     }
   },
   mounted(){
     this.getffxivapi()
+
+    eventBus.$on('clickedMember',member => this.selected = member)
   },
   methods:{
     getffxivapi(){
@@ -33,50 +48,58 @@ export default {
     }
   },
   components:{
-    ffxivDetails
+    ffxivDetails,
+    MemberDetails
   }
 }
 </script>
 
 <style lang="css" scoped>
-body{
+#app{
   width:100%;
   height:100%;
-
   margin:0px;
   padding:5px;
-
   border:solid blue;
   border-width:thin;
-  box-sizing:border-box;
-
-  display:block;
-  text-align:center;
-  align-items:center;
+  display:flex;
+  flex-direction:column;
   }
+#fc_logo{
+  width:75px;
+}
 div{
   border:solid red;
   border-width:thin;
 }
-.paneBody{
+.TopPane{
   width:100%;
-  }
-.leftPane{
+  height:100px;
+}
+.MidPane{
+  width:100%;
+  height:800px;
+  display:flex;
+  flex-direction:row;
+}
+.MidPaneLeft{
   width:150px;
   height:700px;
   overflow:scroll;
+  text-align:center;
+  background-color:lightblue;
 }
-.bodyPane{
-  width:80%;
-
+.MidPaneBody{
+  width:700px;
+  height:700px;
 }
 </style>
 <!-- MVP
-The application should display data from an API request.
-The application should have a clear separation of concerns (multiple components)
-Take input from the user to update the page. You could update the page by filtering or manipulating the data on user interaction, or you might make further API requests to load more data that is then displayed.
+done - The application should display data from an API request.
+done - The application should have a clear separation of concerns (multiple components)
+todo - Take input from the user to update the page. You could update the page by filtering or manipulating the data on user interaction, or you might make further API requests to load more data that is then displayed.
 Extensions
-Looking into a library to visual the data.
+todo - Looking into a library to visual the data.
 
 Leaflet is an open-source library for rendering maps
 Google Charts is a library for rendering charts and graphs
