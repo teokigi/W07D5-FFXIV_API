@@ -7,7 +7,7 @@
           <div class="MidPaneLeft">
               <ffxivDetails v-if="ffxivapi" :details="ffxivapi" />
               <div v-if="!ffxivapi">
-                  <img src="./assets/SoD.gif" id="fc_logo"/><hr><hr>
+                  <img src="./assets/SoD.gif" class="fc_logo"/><hr><hr>
                   Loading Members, please hold yer chocobos
               </div>
           </div>
@@ -15,9 +15,9 @@
             <MemberDetails :member="selected" v-if="selected"/>
               <div v-if="!selected">
                   click on a member on the left to view his or her details
+              </div>
           </div>
-        </div>
-  </div>
+      </div>
   </body>
 </template>
 
@@ -41,10 +41,10 @@ export default {
   },
   methods:{
     getffxivapi(){
-      console.log('')
       fetch("https://staging.xivapi.com/freecompany/9229283011365729585?data=FCM")
     .then(res => res.json())
     .then(resstuff => this.ffxivapi=resstuff)
+
     }
   },
   components:{
@@ -65,7 +65,7 @@ export default {
   display:flex;
   flex-direction:column;
   }
-#fc_logo{
+.fc_logo{
   width:75px;
 }
 div{
