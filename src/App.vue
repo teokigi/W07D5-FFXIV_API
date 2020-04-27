@@ -12,7 +12,8 @@
               </div>
           </div>
           <div class="MidPaneBody">
-            <MemberDetails :member="selected" v-if="selected"/>
+              FINAL FANTASY XIV ©2010 - 2018 SQUARE ENIX CO., LTD. FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd. All material used under license.
+              <MemberDetails :member="selected" v-if="selected" />
               <div v-if="!selected">
                   click on a member on the left to view his or her details
               </div>
@@ -38,16 +39,20 @@ export default {
     this.getffxivapi()
 
     eventBus.$on('clickedMember',member => {
-      this.ffxivapi.FreeCompanyMembers.forEach(fcm => fcm.id === member.id ? fcm = member : null)
-      return this.selected = member})
+      if (this.selected){
+        this.selected = null
+      } else{
+        this.ffxivapi.FreeCompanyMembers.forEach(fcm => fcm.id === member.id ? fcm = member : null)
+        return this.selected = member
+      }
+    })
   },
   methods:{
     getffxivapi(){
       fetch("https://staging.xivapi.com/freecompany/9229283011365729585?data=FCM")
     .then(res => res.json())
     .then(resstuff => this.ffxivapi=resstuff)
-
-    }
+    }    
   },
   components:{
     ffxivDetails,
@@ -62,7 +67,7 @@ export default {
   height:100%;
   margin:0px;
   padding:0px;
-  background-color:black;
+  background-color:#FFBBAA;
   border-width:thin;
   display:flex;
   flex-direction:column;
@@ -108,6 +113,7 @@ export default {
 .MidPaneBody{
   width:700px;
   height:700px;
+  padding:10px;
   overflow:hidden;
 }
 .MidPaneBody::-webkit-scrollbar { 

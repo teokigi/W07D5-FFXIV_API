@@ -24,6 +24,8 @@ export default {
       .then(res => res.json())
       .then(resdata => this.item['fflogdata'] = resdata)
       .then(eventBus.$emit('clickedMember', this.item))
+      } else{
+        eventBus.$emit('clickedMember', this.item)
       }
     }
   }
