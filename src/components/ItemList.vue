@@ -37,12 +37,14 @@ export default {
   visibility:hidden;
   width:200px;
   background-color:black;
+  border:solid white;
+  letter-spacing:2px;
   color:#fff;
   text-align:center;
   padding:5px 0;
   border-radius: 10px;
   position:fixed;
-  top:50px;
+  top:74px;
   left:5px;
   z-index:1;
 }

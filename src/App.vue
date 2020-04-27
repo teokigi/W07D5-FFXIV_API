@@ -99,14 +99,20 @@ export default {
   flex-direction:row;
   overflow-y:scroll;
 }
+.MidPane::-webkit-scrollbar { 
+      display:none;
+      }
 .MidPaneLeft{
+  margin-top:15px;
   width:150px;
   height:700px;
   overflow-y:scroll;
   text-align:center;
   
-  background-color:lightblue;
-  border: solid #FF3333;
+  background-color:#CCCCFF;
+  border: solid #3333FF;
+  box-shadow:inset 0px 0px 20px black;
+  border-radius:15px;
   
 }
 .MidPaneLeft::-webkit-scrollbar { 
@@ -115,7 +121,7 @@ export default {
 .MidPaneBody{
   width:700px;
   height:700px;
-  padding:10px;
+  padding-top:15px;
   overflow:hidden;
 }
 .MidPaneBody::-webkit-scrollbar { 

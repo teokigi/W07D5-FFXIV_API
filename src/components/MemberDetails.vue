@@ -14,7 +14,7 @@
                     </div>
                 </div>
         </div>
-        <div class="fightHeading" v-on:click="toggleView" >toggle FF-logs Data view</div>
+        <div class="fightHeading" v-on:click="toggleView" >FF-Logs</div>
         <div class="fflogdatafield" v-if="logdataview" v-for="fight of member.fflogdata">
             Encounter:{{fight.encounterName}}, percentile:{{Math.round(fight.percentile)}}, Job Class:{{fight.spec}}, overall rank:{{fight.rank}}
         </div>
@@ -51,7 +51,7 @@ export default {
     background-color:lightseagreen;
     background-repeat:no-repeat;
     background-size:100%;
-    border:solid red;
+    box-shadow: inset 0px 0px 20px white;
     border-radius:30px;
     transform:translateX(0px);
     animation-name:slideright;
@@ -72,6 +72,8 @@ export default {
     flex-direction:row;
 }
 .fightHeading{
+    text-align:center;
+    width:100px;
     background-color:blue;
     box-shadow:inset 0px 0px 5px white;
     border-radius:50px;
