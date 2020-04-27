@@ -1,7 +1,7 @@
 <template lang="html">
   <body id="app">
       <div class="TopPane">
-          <h1>Final Fantasy XIV: Free Company, Souls Of Dragons</h1>
+          <h1>Eorzean Free Company, Souls Of Dragons</h1>
       </div>
       <div class="MidPane">
           <div class="MidPaneLeft">
@@ -12,12 +12,14 @@
               </div>
           </div>
           <div class="MidPaneBody">
-              FINAL FANTASY XIV ©2010 - 2018 SQUARE ENIX CO., LTD. FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd. All material used under license.
               <MemberDetails :member="selected" v-if="selected" />
               <div v-if="!selected">
                   click on a member on the left to view his or her details
               </div>
           </div>
+      </div>
+      <div class="footingPane">
+        FINAL FANTASY XIV ©2010 - 2018 SQUARE ENIX CO., LTD. FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd. All material used under license.
       </div>
   </body>
 </template>
