@@ -1,9 +1,12 @@
 # ffxiv
+This App utilises FFXIVAPI.com's API as a resource, a API key is required for access.
 
 ## Project setup
 ```
 npm install
+echo VUE_APP_AKEY='enter api key here' > .env //file must be in root folder
 ```
+
 
 ### Compiles and hot-reloads for development
 ```
