@@ -38,6 +38,7 @@ export default {
     this.getffxivapi()
 
     eventBus.$on('clickedMember',member => {
+      this.ffxivapi.FreeCompanyMembers.forEach(fcm => fcm.id === member.id ? fcm = member : null)
       return this.selected = member})
   },
   methods:{
@@ -73,9 +74,10 @@ export default {
   width:100%;
   height:100px;
   text-align:center;
-  color:#0055FF;
+  color:#3333FF;
   font-family:georgia;
   font-size:16px;
+  letter-spacing:3px;
   text-shadow:2px 1px 5px white;
   box-shadow: inset 0px 0px 10px black;
   border: solid 5px;
@@ -97,8 +99,8 @@ export default {
   text-align:center;
   
   background-color:lightblue;
-  border: solid white;
-  border-radius:50px;
+  border: solid #FF3333;
+  
 }
 .MidPaneLeft::-webkit-scrollbar { 
       display:none;
@@ -106,7 +108,11 @@ export default {
 .MidPaneBody{
   width:700px;
   height:700px;
+  overflow:hidden;
 }
+.MidPaneBody::-webkit-scrollbar { 
+      display:none;
+      }
 </style>
 <!-- MVP
 done - The application should display data from an API request.

@@ -12,21 +12,19 @@ import {akey} from '../main.js'
 export default {
   name: 'item-list',
   props:['item'],
-  data(){
-    return{
-      akey: process.env.VUE_APP_AKEY
-    }
-  },
+  // data(){
+  //   return{
+  //     akey: process.env.VUE_APP_AKEY
+  //   }
+  // },
   methods:{
     clickHandle(){
-    fetch(`https://www.fflogs.com:443/v1/parses/character/${this.item.Name}/Zodiark/EU?metric=dps&api_key=${this.akey}`)
-    .then(res => res.json())
-    .then(resdata => {
-       if (!this.item['fflogdata']){
-         this.item['fflogdata'] = resdata
-       }
-      })
-      eventBus.$emit('clickedMember', this.item)
+      if (!this.item['fflogdata']){
+      fetch(`https://www.fflogs.com:443/v1/parses/character/${this.item.Name}/Zodiark/EU?metric=dps&api_key=${process.env.VUE_APP_AKEY}`)
+      .then(res => res.json())
+      .then(resdata => this.item['fflogdata'] = resdata)
+      .then(eventBus.$emit('clickedMember', this.item))
+      }
     }
   }
 }
