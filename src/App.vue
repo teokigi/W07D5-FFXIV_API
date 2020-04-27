@@ -1,7 +1,7 @@
 <template lang="html">
   <body id="app">
       <div class="TopPane">
-          <h1>Hello Eorzeans</h1>
+          <h1>Final Fantasy XIV: Free Company, Souls Of Dragons</h1>
       </div>
       <div class="MidPane">
           <div class="MidPaneLeft">
@@ -37,7 +37,8 @@ export default {
   mounted(){
     this.getffxivapi()
 
-    eventBus.$on('clickedMember',member => this.selected = member)
+    eventBus.$on('clickedMember',member => {
+      return this.selected = member})
   },
   methods:{
     getffxivapi(){
@@ -59,8 +60,8 @@ export default {
   width:100%;
   height:100%;
   margin:0px;
-  padding:5px;
-  border:solid blue;
+  padding:0px;
+  background-color:black;
   border-width:thin;
   display:flex;
   flex-direction:column;
@@ -68,27 +69,40 @@ export default {
 .fc_logo{
   width:75px;
 }
-div{
-  border:solid red;
-  border-width:thin;
-}
 .TopPane{
   width:100%;
   height:100px;
+  text-align:center;
+  color:#0055FF;
+  font-family:georgia;
+  font-size:16px;
+  text-shadow:2px 1px 5px white;
+  box-shadow: inset 0px 0px 10px black;
+  border: solid 5px;
+  box-sizing:border-box;
+  border-radius:50px;
+  background-color:#220022;
 }
 .MidPane{
   width:100%;
   height:800px;
   display:flex;
   flex-direction:row;
+  overflow-y:scroll;
 }
 .MidPaneLeft{
   width:150px;
   height:700px;
-  overflow:scroll;
+  overflow-y:scroll;
   text-align:center;
+  
   background-color:lightblue;
+  border: solid white;
+  border-radius:50px;
 }
+.MidPaneLeft::-webkit-scrollbar { 
+      display:none;
+      }
 .MidPaneBody{
   width:700px;
   height:700px;
